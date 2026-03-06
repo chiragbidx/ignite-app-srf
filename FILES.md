@@ -12,7 +12,9 @@ AI-facing index of the repository as it exists today. No auth, data layer, or ro
 
 ## 2. Application Entry Points
 - `app/layout.tsx`: Root layout; loads Geist fonts; applies globals.
-- `app/page.tsx`: Public landing page (server component).
+- `app/page.tsx`: Public landing page (server component, SaaS functionality: copy generation).
+- `app/CopyFromProductInfoForm.tsx`: Client component for product info-based copy generation.
+- `app/CopyFromUrlForm.tsx`: Client component for website URL-based copy generation.
 - `app/globals.css`: Global styles; imports Tailwind; defines light/dark CSS variables.
 - `next.config.ts`: Minimal Next config placeholder.
 - `postcss.config.mjs`: PostCSS with `@tailwindcss/postcss`.
@@ -22,11 +24,11 @@ AI-facing index of the repository as it exists today. No auth, data layer, or ro
 - `app/`: UI shell and routing.
 - `public/`: Static assets (logos/icons).
 - Config/tooling: `eslint.config.mjs`, `postcss.config.mjs`, `next.config.ts`, `tsconfig.json`.
-- No `components/`, `lib/`, or route groups yet; create when needed.
+- No `lib/` or route groups yet.
 
 ## 4. Routes (Controllers)
 - `/` → `app/page.tsx`
-  - Purpose: default landing UI.
+  - Purpose: landing & SaaS UI for copy generation (from product info or URL).
   - DTOs/validation/guards: none; render-only.
 
 ## 5. Services & Providers
@@ -63,7 +65,9 @@ app/
   favicon.ico         # Favicon
   globals.css         # Global styles + Tailwind entry
   layout.tsx          # Root layout with fonts
-  page.tsx            # Public landing page (/)
+  page.tsx            # Landing page (SaaS copy generator)
+  CopyFromProductInfoForm.tsx # Form UI for product-based copy gen
+  CopyFromUrlForm.tsx  # Form UI for URL-based copy gen
 public/
   file.svg            # Sample asset
   globe.svg           # Sample asset
